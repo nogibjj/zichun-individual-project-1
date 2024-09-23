@@ -1,12 +1,25 @@
 
-# Zichun Mini Project 1
+# Zichun individual Project 1
 
-This is a Python project template with a functioning `Makefile`, a `.devcontainer`, and basic setup for CI/CD using GitHub Actions. The project also includes unit tests and linting with `pylint`.
+## Project Overview
 
-## Links
+This project demonstrates Continuous Integration (CI) with GitLab Actions. It includes:
+- A Python Data Science project using Polars or Pandas for descriptive statistics.
+- Automated testing of the Jupyter Notebook using `nbval`.
+- CI pipeline for linting, formatting, and testing.
 
-- **Version control Source Code Management Repository**: [github repo](https://github.com/nogibjj/zichun-miniproject-1).
-- **Link to successful CI/CD run**: [Link to GitHub Actions](https://github.com/nogibjj/zichun-miniproject-1/actions).
+## Project Structure
+
+The repository contains the following key files:
+- **Jupyter Notebook**: A notebook performing descriptive statistics using Polars or Pandas.
+- **Makefile**: Automates tasks such as testing, linting, formatting, and installing dependencies.
+- **test_script.py**: Contains unit tests for the Python script.
+- **test_lib.py**: Contains tests for any library used in the project.
+- **requirements.txt**: Contains the pinned dependencies for the project.
+- **GitLab Actions**: The CI pipeline is configured to:
+   - Run tests.
+   - Format code using `black`.
+   - Lint code using `Ruff`.
 
 
 ## Project Setup
@@ -14,8 +27,8 @@ This is a Python project template with a functioning `Makefile`, a `.devcontaine
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/zichun-miniproject-1.git
-cd zichun-miniproject-1
+git clone https://github.com/chun77/zichun-individual-project-1.git
+cd zichun-individual-project-1
 ```
 
 ### 2. Install Dependencies
