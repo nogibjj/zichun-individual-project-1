@@ -1,37 +1,47 @@
 # Individual Project #1: Continuous Integration of Python Data Science Project
 
-This project demonstrates continuous integration (CI) using GitLab Actions, performing descriptive statistics with Polars and Pandas.
+This project performs descriptive statistics and generates visualizations using both Pandas and Polars on an Olympic medals dataset. The CI/CD pipeline automates testing, formatting, and executing the Jupyter notebook, and commits any updates automatically.
 
-## Project Structure
+## Features
 
-- `notebooks/descriptive_stats.ipynb`: Jupyter Notebook for stats.
-- `src/main.py`: Script for Polars and Pandas.
-- `src/lib.py`: Shared code library.
-- `tests/`: Contains test scripts.
-- `Makefile`: Automates testing, formatting, and linting.
+1. Descriptive Statistics:
 
-## Usage
+- Performed using both Pandas and Polars.
+- Statistics include count, mean, median, standard deviation, min, max, and percentiles.
 
-1. Install dependencies:
+2. Data Visualization:
+
+- A bar chart is generated for the total medals won by the top 50 countries.
+3. CI/CD Pipeline:
+
+- Automatically runs tests, linting, formatting, and Jupyter notebook execution.
+- If changes are detected in the Jupyter notebook, it is automatically committed.
+
+## Instructions
+
+1. Clone the Repository:
     ```bash
-    make install
+    git clone <repo-url>
+    cd <repo-directory>
     ```
 
-2. Run tests:
+2. Install Dependencies:
     ```bash
-    make test
+    pip install -r requirements.txt
     ```
 
-3. Format code:
+3. Running the Makefile Commands:
     ```bash
-    make format
+   make test    # Run all tests (notebook, script, and lib)
+   make format  # Format code with Black
+   make lint    # Lint code with Ruff
     ```
 
-4. Lint code:
+4. Running the Jupyter Notebook:
     ```bash
-    make lint
+    jupyter notebook notebooks/descriptive_stats.ipynb
     ```
 
-## CI/CD Pipeline
+5. CI/CD Pipeline
 
-The GitLab pipeline runs tests, formatting, and linting automatically.
+The CI/CD pipeline automatically runs the notebook and commits any changes to the repository.
