@@ -6,3 +6,4 @@ nbval
 black
 ruff
 jupyter
+pyarrow
