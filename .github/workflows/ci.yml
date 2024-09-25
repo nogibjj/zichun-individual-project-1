@@ -1,36 +1,19 @@
-name: Python CI
+stages:
+  - test
+  - format
+  - lint
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+test:
+  stage: test
+  script:
+    - make test
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+format:
+  stage: format
+  script:
+    - make format
 
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-
-      - name: Lint with pylint
-        run: |
-          pylint src/main.py
-
-      - name: Run tests
-        env:
-          PYTHONPATH: ${{ github.workspace }}/src  # Set PYTHONPATH to include src
-        run: |
-          pytest tests
-
+lint:
+  stage: lint
+  script:
+    - make lint

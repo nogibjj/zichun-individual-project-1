@@ -1,16 +1,18 @@
+import pandas as pd
+import polars as pl
 
-"""
-This module contains a simple add function and a main function for demonstration.
-"""
+def pandas_summary(filepath):
+    df = pd.read_csv(filepath)
+    return df['Total'].describe()
 
-def add(a, b):
-    """Return the sum of a and b."""
-    return a + b
-
-def main():
-    """Prints 'Hello, world!' when executed."""
-    print("Hello, world!")
+def polars_summary(filepath):
+    df = pl.read_csv(filepath)
+    return df.select([
+        pl.col('Total').mean().alias('mean'),
+        pl.col('Total').median().alias('median'),
+        pl.col('Total').std().alias('std')
+    ])
 
 if __name__ == "__main__":
-    main()
-
+    print(pandas_summary('data/medals_total.csv'))
+    print(polars_summary('data/medals_total.csv'))

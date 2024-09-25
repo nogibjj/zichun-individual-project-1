@@ -1,9 +1,12 @@
-setup:
+install:
     pip install -r requirements.txt
 
-lint:
-    pylint src/main.py
-
 test:
-    pytest tests
+    pytest --nbval notebooks/descriptive_stats.ipynb
+    pytest tests/test_script.py tests/test_lib.py
 
+format:
+    black src/
+
+lint:
+    ruff src/ tests/
