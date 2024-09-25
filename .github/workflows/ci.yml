@@ -26,7 +26,7 @@ jobs:
 
       - name: Run Jupyter notebook and save output
         run: |
-          jupyter nbconvert --to notebook --inplace --execute descriptive_stats.ipynb
+          jupyter nbconvert --to notebook --inplace --execute ../notebooks/descriptive_stats.ipynb
 
       - name: Lint with Ruff
         run: |

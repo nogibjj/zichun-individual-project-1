@@ -14,5 +14,5 @@ def polars_summary(filepath):
     ])
 
 if __name__ == "__main__":
-    print(pandas_summary('data/medals_total.csv'))
-    print(polars_summary('data/medals_total.csv'))
+    print(pandas_summary('../data/medals_total.csv'))
+    print(polars_summary('../data/medals_total.csv'))
