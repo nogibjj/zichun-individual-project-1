@@ -5,3 +5,4 @@ pytest
 nbval
 black
 ruff
+jupyter

@@ -15,50 +15,32 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
 
-      # Install dependencies from requirements.txt
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
 
-      # Run tests (includes nbval to test the Jupyter Notebook and other test files)
-      - name: Run tests
+      - name: Run Jupyter notebook and save output
         run: |
-          pytest --nbval notebooks/descriptive_stats.ipynb
-          pytest tests/test_script.py tests/test_lib.py
+          jupyter nbconvert --to notebook --inplace --execute descriptive_stats.ipynb
 
-      # Format code using black
-      - name: Format code
-        run: |
-          black src/ tests/
-
-      # Lint code using Ruff
-      - name: Lint code
+      - name: Lint with Ruff
         run: |
           ruff check src/ tests/
 
-      # Run the main script to generate summary report and plot
-      - name: Run script and generate report
+      - name: Format with Black
         run: |
-          python src/main.py
+          black src/ tests/
 
-      # Configure Git user identity for commit
-      - name: Configure Git user identity
+      - name: Commit executed notebook
         run: |
           git config --global user.email "zichunwang733@gmail.com"
           git config --global user.name "chun77"
-
-      # Commit and push generated files if there are changes
-      - name: Generate summary report and commit
-        run: |
-          git add output/summary_report.md output/total_medals_by_top_50_countries.png
-          if ! git diff --cached --quiet; then
-            git commit -m "Add summary report and data visualization"
-            git push
-          else
-            echo "No changes to commit"
+          git add descriptive_stats.ipynb
+          git commit -m "Add executed notebook with outputs"
+          git push
+        continue-on-error: true

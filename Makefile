@@ -1,12 +1,14 @@
-install:
-    pip install -r requirements.txt
-
-test:
-    pytest --nbval notebooks/descriptive_stats.ipynb
-    pytest tests/test_script.py tests/test_lib.py
-
-format:
-    black src/
+test-notebook:
+  pytest --nbval descriptive_stats.ipynb
 
 lint:
-    ruff check src/ tests/
+  ruff check src/ tests/
+
+format:
+  black src/ tests/
+
+install:
+  pip install -r requirements.txt
+
+test-all:
+  pytest tests/ test_script.py test_lib.py --nbval descriptive_stats.ipynb
