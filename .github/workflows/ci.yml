@@ -40,7 +40,7 @@ jobs:
       # Lint code using Ruff
       - name: Lint code
         run: |
-          ruff src/ tests/
+          ruff check src/ tests/
 
       # Run the main script to generate summary report and plot
       - name: Run script and generate report

@@ -9,4 +9,4 @@ format:
     black src/
 
 lint:
-    ruff src/ tests/
+    ruff check src/ tests/
