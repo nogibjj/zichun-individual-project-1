@@ -40,7 +40,13 @@ jobs:
         run: |
           git config --global user.email "zichunwang733@gmail.com"
           git config --global user.name "chun77"
-          git add descriptive_stats.ipynb
-          git commit -m "Add executed notebook with outputs"
-          git push
+          git status  # Check file status
+          git diff    # Check for changes
+          git add notebooks/descriptive_stats.ipynb
+          if ! git diff --cached --quiet; then
+            git commit -m "Add executed notebook with outputs"
+            git push
+          else
+            echo "No changes to commit"
+          fi
         continue-on-error: true
